@@ -20,24 +20,70 @@
   };
 </script>
 
-<div class={`stats ${getSectioName(section).toLocaleLowerCase().replaceAll(' ', '-')}`}>
-  <h3>{getSectioName(section)}</h3>
-    <div class={"stat-container"}>
-      <div class="stat">
-        <h2 class="stat-title">Missing minutes</h2>
-        <h3 class="stat-data">{stats[getSectioName(section)].missingMinutes}</h3>
-      </div>
-      <div class="stat">
-        <h2 class="stat-title">Missing hours</h2>
-        <h3 class="stat-data">{stats[getSectioName(section)].missingHours}</h3>
-      </div>
-    </div>
+<div class={`rectangulo ${getSectioName(section).toLocaleLowerCase().replaceAll(' ', '-')}`}>
+  <h3 class="title">{getSectioName(section)}</h3>
+  <div class={`hours-container`}>
+    <h4>Missing time:</h4>
+    <h4>{stats[getSectioName(section)].missingHours} hours</h4>
+    <h4>{stats[getSectioName(section)].missingMinutes} minutes</h4>
+    <h4>{stats[getSectioName(section)].missingMinutes / 24} chapters</h4>
+  </div>
 </div>
 
 <style>
 
+  .rectangulo {
+    width: 100%;
+    height: 100px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .rectangulo.watching:hover {
+    box-shadow: #2db039 2px 2px 2px 0px
+  }
+
+  .rectangulo.on-hold:hover {
+    box-shadow: #f1c83e 2px 2px 2px 0px
+  }
+
+  .rectangulo.dropped:hover {
+    box-shadow: #a12f31 2px 2px 2px 0px
+  }
+
+  .rectangulo.plan-to-watch:hover {
+    box-shadow: #c3c3c3 2px 2px 2px 0px
+  }
+
+  .title {
+    text-transform: uppercase;
+    font-size: 2rem;
+    position: absolute;
+    left: 30px;
+    top: -23px;
+  }
+
+  /* 1 row 3 columns */
+  .hours-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    width: 100%;
+  }
+
+  h4 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
   .watching {
-    color: #2db039;
+    color:  #2db039;
   }
 
   .dropped {
@@ -56,56 +102,5 @@
     text-transform: uppercase;
 		font-size: 1.5rem;
     margin: 0;
-	}
-
-  .stat-container {
-    display: flex;
-    gap: 25px;
-  }
-
-  .stats {
-		display: flex;
-		gap: 25px;
-		padding: 1rem;
-    flex-direction: column;
-    text-align: center;
-	}
-
-	.stat {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		gap: 25px;
-	}
-
-	.stat-title {
-		font-size: 2rem;
-		margin: 0;
-		animation: lineUp 2s ease-out 0s 1;
-	}
-	
-	.stat-data {
-		font-size: 2rem;
-		margin: 0;
-		animation: lineUp 2s ease-out 0s 1;
-	}
-
-  @keyframes lineUp {
-		0% {
-			opacity: 0;
-			transform: translateY(80%);
-		}
-		20% {
-			opacity: 0;
-		}
-		50% {
-			opacity: 1;
-			transform: translateY(0%);
-		}
-		100% {
-			opacity: 1;
-			transform: translateY(0%);
-		}
 	}
 </style>

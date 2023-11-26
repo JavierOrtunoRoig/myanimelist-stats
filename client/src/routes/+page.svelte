@@ -55,7 +55,6 @@
 			<Stats {stats} section={4} />
 			<Stats {stats} section={6} />
 		</div>
-
 	{/if}
 </section>
 
@@ -95,8 +94,11 @@
 
 	.stats-container {
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		gap: 10px;
+		gap: 30px;
+		width: 90%;
+		padding: 50px;
 	}
 </style>
