@@ -13,8 +13,7 @@ const scrapeSeries = async (accountURL, status) => {
   await page.setViewport({width: 1080, height: 1024});
   await page.goto(`${accountURL}?status=${MY_ANIME_LIST_STATUS[status]}}`);
 
-  const series = await page.$$eval('tr.list-table-data', (series) => {
-    return series.map((serie) => {
+  const series = await page.$$eval('tr.list-table-data', (series) => series.map((serie) => {
       // get title
       const td_title = serie.querySelector('td.title a');
       const title = td_title?.textContent;
@@ -28,7 +27,7 @@ const scrapeSeries = async (accountURL, status) => {
         total_chapters
       }
     })
-  });
+  );
 
   const seriesWithKnownChapters = series.filter((serie) => serie.total_chapters);
   const seriesWithUnknownChapters = series.filter((serie) => !serie.total_chapters);

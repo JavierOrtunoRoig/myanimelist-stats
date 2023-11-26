@@ -1,5 +1,5 @@
 import express from 'express';
-import { getSeries } from './scrape.js';
+import { getSeries } from './model.js';
 import cors from 'cors';
 
 const app = express();
