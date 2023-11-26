@@ -11,7 +11,7 @@
 
 	let stats = null;
 
-	// Regex to valdiate if url is entired: https://myanimelist.net/animelist/JaViMaTaGiRi?status=1
+	// Regex to validate if url is entired: https://myanimelist.net/animelist/JaViMaTaGiRi?status=1
 	const regex = new RegExp(/^(https:\/\/myanimelist.net\/animelist\/)([a-zA-Z0-9]+)/);
 
 	const handleSearch = () => {
