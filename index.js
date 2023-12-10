@@ -1,13 +1,13 @@
 import express from 'express';
-import { getSeries } from './model.js';
 import cors from 'cors';
+import { handler } from './client/build/handler.js';
+import { getSeries } from './model.js';
 
 const app = express();
 const port = 4000;
 
 // cors
 app.use(cors())
-
 app.get('/api', async (req, res) => {
 
   try {
@@ -33,6 +33,9 @@ app.get('/api', async (req, res) => {
     
   }
 });
+
+app.use(handler)
+
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
