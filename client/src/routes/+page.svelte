@@ -10,7 +10,7 @@
 		waiting: false
 	};
 	let stats = null;
-	const url = dev ? 'http://localhost:4000/api' : 'https://myanimelist-status.vercel.app/api';
+	const url = dev ? 'http://localhost:4000/api' : 'https://myanimelist-stats.vercel.app/api';
 
 	// Regex to validate if url is entired: https://myanimelist.net/animelist/JaViMaTaGiRi?status=1
 	const regex = new RegExp(/^(https:\/\/myanimelist.net\/animelist\/)([a-zA-Z0-9]+)/);
