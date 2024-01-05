@@ -57,7 +57,7 @@ const Stats = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   <div class="${escape(null_to_empty(`hours-container`), true) + " svelte-yql3zl"}"><h4 class="${"svelte-yql3zl"}">Missing time:</h4>
     <h4 class="${"svelte-yql3zl"}">${escape(stats[getSectioName(section)].missingHours)} hours</h4>
     <h4 class="${"svelte-yql3zl"}">${escape(stats[getSectioName(section)].missingMinutes)} minutes</h4>
-    <h4 class="${"svelte-yql3zl"}">${escape(stats[getSectioName(section)].missingMinutes / 24)} chapters</h4></div>
+    <h4 class="${"svelte-yql3zl"}">${escape(stats[getSectioName(section)].missingMinutes / 20)} chapters</h4></div>
 </div>`;
 });
 const css = {
@@ -68,13 +68,12 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   const { debounce } = pkg;
   let search = { value: "", waiting: false };
   let stats = null;
-  const url = "https://myanimelist-stats.vercel.app/api";
   const regex = new RegExp(/^(https:\/\/myanimelist.net\/animelist\/)([a-zA-Z0-9]+)/);
   const handleSearch = () => {
     if (!regex.test(search.value))
       return;
     search.waiting = true;
-    fetch(`${url}?anime=${search.value}`).then((res) => res.json()).then((data) => {
+    fetch(`https://my-anime-stats-backend.vercel.app/api?anime=${search.value}`).then((res) => res.json()).then((data) => {
       stats = data;
       search.waiting = false;
     });
@@ -96,4 +95,4 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 });
 
 export { Page as default };
-//# sourceMappingURL=_page.svelte-41c8aa0a.js.map
+//# sourceMappingURL=_page.svelte-9d440034.js.map
