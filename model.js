@@ -10,7 +10,10 @@ const MY_ANIME_LIST_STATUS = {
 const CHAPTER_DURATION = 20;
 
 const scrapeSeries = async (accountURL, status) => { 
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--single-process', '--no-zygote'],
+    executablePath: process.env.NODE_ENV === 'production' ? process.env.PUPPETEER_EXECUTABLE_PATH : puppeteer.executablePath(),
+  });
   const page = await browser.newPage();
   await page.setViewport({width: 1080, height: 1024});
   await page.goto(`${accountURL}?status=${MY_ANIME_LIST_STATUS[status]}}`);
