@@ -1,6 +1,4 @@
 <script>
-	import pkg from 'debounce';
-	const { debounce } = pkg;
 	import { dev } from '$app/environment';
 	import Spinner from '../components/Spinner.svelte';
 	import Stats from '../components/Stats.svelte';
@@ -10,7 +8,7 @@
 		waiting: false
 	};
 	let stats = null;
-	const url = dev ? 'http://localhost:4000/api' : 'https://myanimelist-stats.vercel.app/api';
+	const url = dev ? 'http://localhost:4000/api' : 'https://myanimelist-stats-jjor.onrender.com/api';
 
 	// Regex to validate if url is entired: https://myanimelist.net/animelist/JaViMaTaGiRi?status=1
 	const regex = new RegExp(/^(https:\/\/myanimelist.net\/animelist\/)([a-zA-Z0-9]+)/);
@@ -26,6 +24,13 @@
 			});
 	};
 
+	const debounce = (fn, ms = 0) => {
+  let timeoutId;
+  return function(...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn.apply(this, args), ms);
+  };
+};
 	const debounceSearch = debounce(handleSearch, 1000);
 </script>
 

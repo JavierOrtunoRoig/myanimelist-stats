@@ -1,4 +1,4 @@
-import { c as create_ssr_component, s as setContext, v as validate_component, m as missing_component, n as noop, a as safe_not_equal } from './chunks/index-cadeb0d9.js';
+import { c as create_ssr_component, s as setContext, v as validate_component, m as missing_component, n as noop, a as safe_not_equal } from './chunks/index-3ce6e6d7.js';
 
 /** @type {Record<string, string>} */
 const escaped = {
@@ -598,7 +598,7 @@ ${components[1] ? `${validate_component(components[0] || missing_component, "sve
 ${``}`;
 });
 set_paths({ "base": "", "assets": "" });
-set_version("1704444132416");
+set_version("1704445664356");
 const options = {
   csp: { "mode": "auto", "directives": { "upgrade-insecure-requests": false, "block-all-mixed-content": false }, "reportOnly": { "upgrade-insecure-requests": false, "block-all-mixed-content": false } },
   csrf_check_origin: true,

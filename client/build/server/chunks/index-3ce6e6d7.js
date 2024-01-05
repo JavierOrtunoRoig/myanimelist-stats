@@ -19,9 +19,6 @@ function subscribe(store, ...callbacks) {
   const unsub = store.subscribe(...callbacks);
   return unsub.unsubscribe ? () => unsub.unsubscribe() : unsub;
 }
-function null_to_empty(value) {
-  return value == null ? "" : value;
-}
 let current_component;
 function set_current_component(component) {
   current_component = component;
@@ -110,5 +107,5 @@ function add_attribute(name, value, boolean) {
   return ` ${name}${assignment}`;
 }
 
-export { safe_not_equal as a, subscribe as b, create_ssr_component as c, add_attribute as d, escape as e, null_to_empty as f, getContext as g, missing_component as m, noop as n, setContext as s, validate_component as v };
-//# sourceMappingURL=index-cadeb0d9.js.map
+export { safe_not_equal as a, subscribe as b, create_ssr_component as c, add_attribute as d, escape as e, getContext as g, missing_component as m, noop as n, setContext as s, validate_component as v };
+//# sourceMappingURL=index-3ce6e6d7.js.map
