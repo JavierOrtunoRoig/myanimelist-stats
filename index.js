@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import { handler } from './client/build/handler.js';
 import { getSeries } from './model.js';
 
 const app = express();
@@ -32,6 +33,8 @@ app.get('/api', async (req, res) => {
     
   }
 });
+
+app.use(handler)
 
 
 app.listen(port, () => {
