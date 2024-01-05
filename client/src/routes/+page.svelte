@@ -18,7 +18,7 @@
 	const handleSearch = () => {
 		if (!regex.test(search.value)) return;
 		search.waiting = true;
-		fetch(`${url}?anime=${search.value}`)
+		fetch(`https://my-anime-stats-backend.vercel.app/api?anime=${search.value}`)
 			.then((res) => res.json())
 			.then((data) => {
 				stats = data;

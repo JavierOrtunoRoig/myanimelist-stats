@@ -7,6 +7,8 @@ const MY_ANIME_LIST_STATUS = {
   'Plan to Watch': 6,
 };
 
+const CHAPTER_DURATION = 20;
+
 const scrapeSeries = async (accountURL, status) => { 
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
@@ -62,13 +64,13 @@ const getSeriesFor = async (accountURL, status) => {
     ...serie,
     missing_chapters: serie.total_chapters - (serie.last_chapter || 0),
   }))
-  const missingMinutes = seriesWithKnownChapters.reduce((acc, serie) =>  acc + serie.missing_chapters * 24, 0);
+  const missingMinutes = seriesWithKnownChapters.reduce((acc, serie) =>  acc + serie.missing_chapters * CHAPTER_DURATION, 0);
   const missingHours = missingMinutes / 60;
 
   return {
     seriesWithKnownChapters,
     seriesWithUnknownChapters,
-    missingMinutes,
-    missingHours
+    missingMinutes: parseFloat(missingMinutes.toPrecision(3)),
+    missingHours: parseFloat(missingHours.toPrecision(3))
   }
 }

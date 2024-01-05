@@ -4,7 +4,7 @@ import { handler } from './client/build/handler.js';
 import { getSeries } from './model.js';
 
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 // cors
 app.use(cors())

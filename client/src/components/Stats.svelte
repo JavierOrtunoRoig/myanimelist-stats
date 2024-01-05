@@ -26,7 +26,7 @@
     <h4>Missing time:</h4>
     <h4>{stats[getSectioName(section)].missingHours} hours</h4>
     <h4>{stats[getSectioName(section)].missingMinutes} minutes</h4>
-    <h4>{stats[getSectioName(section)].missingMinutes / 24} chapters</h4>
+    <h4>{stats[getSectioName(section)].missingMinutes / 20} chapters</h4>
   </div>
 </div>
 
