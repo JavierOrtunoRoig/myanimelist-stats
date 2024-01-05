@@ -16,10 +16,20 @@
 	const handleSearch = () => {
 		if (!regex.test(search.value)) return;
 		search.waiting = true;
-		fetch(`https://my-anime-stats-backend.vercel.app/api?anime=${search.value}`)
+		fetch(`${url}?anime=${search.value}`)
 			.then((res) => res.json())
 			.then((data) => {
 				stats = data;
+				// get actual date with format: dd/mm/yyyy - hh:mm
+				const date = new Date().toLocaleString('es-ES', {
+					day: 'numeric',
+					month: 'numeric',
+					year: 'numeric',
+					hour: 'numeric',
+					minute: 'numeric'
+				});
+				const savedStats = JSON.parse(localStorage.getItem('stats')) || [];
+				savedStats.push({stats, date});
 				search.waiting = false;
 			});
 	};
