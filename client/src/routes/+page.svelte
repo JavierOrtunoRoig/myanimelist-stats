@@ -30,6 +30,7 @@
 				});
 				const savedStats = JSON.parse(localStorage.getItem('stats')) || [];
 				savedStats.push({stats, date});
+				localStorage.setItem('stats', JSON.stringify(savedStats));
 				search.waiting = false;
 			});
 	};

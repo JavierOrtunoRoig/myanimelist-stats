@@ -12,6 +12,7 @@ const CHAPTER_DURATION = 20;
 const scrapeSeries = async (accountURL, status) => { 
   const browser = await puppeteer.launch({
     args: ['--no-sandbox', '--disable-setuid-sandbox', '--single-process', '--no-zygote'],
+    headless: true,
     executablePath: process.env.NODE_ENV === 'production' ? process.env.PUPPETEER_EXECUTABLE_PATH : puppeteer.executablePath(),
   });
   const page = await browser.newPage();
