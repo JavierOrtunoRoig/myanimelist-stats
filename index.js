@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { handler } from './client/build/handler.js';
 import { getSeries } from './model.js';
+import { log } from './log.js';
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -12,13 +13,13 @@ app.get('/api', async (req, res) => {
 
   try {
     const { anime } = req.query;
-    console.log(`Anime: ${anime}`);
+    log("MyAnimeList link: " + anime);
     const parserdAnime = anime.split('?')[0];
-    console.log(`Parsed Anime name: ${parserdAnime}`);
+    log(`Parsed Anime name: ${parserdAnime}`);
     const data = await getSeries(parserdAnime)
     res.json(data);
   } catch (error) {
-    console.log(error);
+    log(error, 'ERROR');
     if (error.name === 'ProtocolError') {
       res.status(400).json({
         ok: false,

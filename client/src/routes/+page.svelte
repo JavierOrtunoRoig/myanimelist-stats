@@ -1,5 +1,4 @@
 <script>
-	import { dev } from '$app/environment';
 	import Spinner from '../components/Spinner.svelte';
 	import Stats from '../components/Stats.svelte';
 
@@ -8,7 +7,6 @@
 		waiting: false
 	};
 	let stats = null;
-	const url = dev ? 'http://localhost:4000/api' : 'https://myanimelist-stats-jjor.onrender.com/api';
 
 	// Regex to validate if url is entired: https://myanimelist.net/animelist/JaViMaTaGiRi?status=1
 	const regex = new RegExp(/^(https:\/\/myanimelist.net\/animelist\/)([a-zA-Z0-9]+)/);
@@ -16,7 +14,7 @@
 	const handleSearch = () => {
 		if (!regex.test(search.value)) return;
 		search.waiting = true;
-		fetch(`${url}?anime=${search.value}`)
+		fetch(`${window.location.href}api?anime=${search.value}`)
 			.then((res) => res.json())
 			.then((data) => {
 				stats = data;

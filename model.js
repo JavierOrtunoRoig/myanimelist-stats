@@ -1,4 +1,5 @@
 import puppeteer from 'puppeteer';
+import { log } from './log.js';
 
 const MY_ANIME_LIST_STATUS = {
   'Watching': 1,
@@ -47,11 +48,26 @@ const scrapeSeries = async (accountURL, status) => {
 }
 
 export const getSeries = async (accountURL) => {
-  
+  log(`Getting series for ${accountURL}`);
+
+  log(`Getting with status Watching`);
   const watching = await getSeriesFor(accountURL, 'Watching');
+  log(`Watching series scraped\n`)
+
+  log(`Getting with status On Hold`)
   const onHold = await getSeriesFor(accountURL, 'On Hold');
+  log(`On Hold series scraped\n`)
+
+  log(`Getting with status Dropped`)
   const dropped = await getSeriesFor(accountURL, 'Dropped');
+  log(`Dropped series scraped\n`)
+
+  log(`Getting with status Plan to Watch`)
   const planToWatch = await getSeriesFor(accountURL, 'Plan to Watch');
+  log(`Plan to Watch series scraped`)
+
+  console.log("\n\n");
+  log('series scraping finished')
 
   return {
     "Watching": watching,
