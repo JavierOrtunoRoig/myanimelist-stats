@@ -4,11 +4,11 @@ const manifest = {
 	assets: new Set(["favicon.png","robots.txt"]),
 	mimeTypes: {".png":"image/png",".txt":"text/plain"},
 	_: {
-		entry: {"file":"_app/immutable/start-d2006b02.js","imports":["_app/immutable/start-d2006b02.js","_app/immutable/chunks/index-84025daa.js","_app/immutable/chunks/singletons-01f23006.js"],"stylesheets":[],"fonts":[]},
+		entry: {"file":"_app/immutable/start-caa414f3.js","imports":["_app/immutable/start-caa414f3.js","_app/immutable/chunks/index-e6e89573.js","_app/immutable/chunks/singletons-bcdcf876.js"],"stylesheets":[],"fonts":[]},
 		nodes: [
-			() => import('./chunks/0-02cd3a32.js'),
-			() => import('./chunks/1-60b1dfbc.js'),
-			() => import('./chunks/2-675ec117.js')
+			() => import('./chunks/0-645671db.js'),
+			() => import('./chunks/1-3a687725.js'),
+			() => import('./chunks/2-2c47e9c0.js')
 		],
 		routes: [
 			{

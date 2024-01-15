@@ -33,14 +33,6 @@
 			});
 	};
 
-	const debounce = (fn, ms = 0) => {
-  let timeoutId;
-  return function(...args) {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => fn.apply(this, args), ms);
-  };
-};
-	const debounceSearch = debounce(handleSearch, 1000);
 </script>
 
 <section>
@@ -48,13 +40,15 @@
 
 	<div class="search-container">
 		<label for="search">Your myanimelist url: </label>
-		<input
-			type="text"
-			name="search"
-			placeholder="https://myanimelist.net/animelist/username"
-			bind:value={search.value}
-			on:keyup={debounceSearch(search)}
-		/>
+		<div style="display: flex; gap: 5px;">
+			<input
+				type="text"
+				name="search"
+				placeholder="https://myanimelist.net/animelist/username"
+				bind:value={search.value}
+			/>
+			<button on:click={handleSearch}>Search</button>
+		</div>
 	</div>
 
 	{#if search.waiting}
@@ -67,7 +61,7 @@
 		<div class="stats-container">
 			<Stats {stats} section={1} />
 			<Stats {stats} section={3} />
-			<Stats {stats} section={4} />
+			<!-- <Stats {stats} section={4} /> -->
 			<Stats {stats} section={6} />
 		</div>
 	{/if}
@@ -94,10 +88,19 @@
 		font-size: 1.5rem;
 	}
 
-	.search-container > input {
+	.search-container input {
 		height: 3rem;
+		width: 100%;
 		border-radius: 0.5rem;
 		color: black;
+	}
+
+	button {
+		height: 3rem;
+		width: 10rem;
+		border-radius: 0.5rem;
+		border-color: #f5f5f5;
+		border-width: 1px;
 	}
 
 	.spinner {

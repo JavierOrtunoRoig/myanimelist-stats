@@ -58,9 +58,9 @@ export const getSeries = async (accountURL) => {
   const onHold = await getSeriesFor(accountURL, 'On Hold');
   log(`On Hold series scraped\n`)
 
-  log(`Getting with status Dropped`)
-  const dropped = await getSeriesFor(accountURL, 'Dropped');
-  log(`Dropped series scraped\n`)
+  // log(`Getting with status Dropped`)
+  // const dropped = await getSeriesFor(accountURL, 'Dropped');
+  // log(`Dropped series scraped\n`)
 
   log(`Getting with status Plan to Watch`)
   const planToWatch = await getSeriesFor(accountURL, 'Plan to Watch');
@@ -72,7 +72,7 @@ export const getSeries = async (accountURL) => {
   return {
     "Watching": watching,
     "On Hold": onHold,
-    "Dropped": dropped,
+    // "Dropped": dropped,
     "Plan to Watch": planToWatch
   }
 

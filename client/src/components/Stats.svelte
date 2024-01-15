@@ -14,10 +14,10 @@
         return "Dropped";
       case 6:
         return "Plan to Watch";
-      case 7:
-        return "All Anime";
-    }
-  };
+        case 7:
+          return "All Anime";
+        }
+      };
 </script>
 
 <div class={`rectangulo ${getSectioName(section).toLocaleLowerCase().replaceAll(' ', '-')}`}>
